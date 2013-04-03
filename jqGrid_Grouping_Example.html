@@ -1,0 +1,48 @@
+<html>
+<head>
+<script>
+$(function() {
+	var GroupAll = {
+		groupField: ['Date','Dept','Cat'],
+		groupOrder: ['asc','asc', 'asc'],
+		groupDataSorted: true,
+		groupColumnShow: [false, false, false],
+		groupCollapse: {
+			enabled: true,
+			collapseLevels: [false, true, false]
+		}
+	};
+
+	var GroupSingle: {
+		groupField: ['OutOfCodeDateDisplay','CategoryDescription'],
+		groupOrder: ['asc','asc'],
+		groupDataSorted: true,
+		groupColumnShow: [false, false],
+		groupCollapse: {
+		    enabled: true,
+		    collapseLevels: [false, true]
+		}                
+	};    
+
+	var Init = function () {
+	    $("#grid").jqGrid({
+		colNames: ['Date', 'Dept', 'Cat' ],
+		colModel: [
+		    { name: 'Date', index: 'Date', width: 200, align: 'right', sortable: false },
+		    { name: 'Dept', index: 'Dept' }, // Grouping	    
+		    { name: 'Cat', index: 'Cat', width: 250, sortable: false }	    
+		],
+		url: gridUrl,	
+		grouping: true,
+		groupingView: GroupingAll
+	    });	    
+	}
+}    
+</script>
+</head>
+<body>
+<div>
+	<table id="grid"></table>
+</div>
+</body>
+</html>
